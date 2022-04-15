@@ -10,6 +10,11 @@ workspace "Atlas"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "Atlas/vendor/GLFW/include"
+
+include "Atlas/vendor/GLFW"
+
 project "Atlas"
     location "Atlas"
     kind "SharedLib"
@@ -30,7 +35,14 @@ project "Atlas"
     includedirs
     {
         "%{prj.name}/src",
-        "%{prj.name}/vendor/spdlog/include"
+        "%{prj.name}/vendor/spdlog/include",
+        "%{IncludeDir.GLFW}"
+    }
+
+    links
+    {
+        "GLFW",
+        "opengl32.lib"
     }
 
     filter "system:windows"
