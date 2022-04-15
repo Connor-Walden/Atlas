@@ -1,7 +1,5 @@
 #pragma once
 
-#include <cstdint>
-
 namespace Atlas
 {
 	using KeyCode = uint16_t;

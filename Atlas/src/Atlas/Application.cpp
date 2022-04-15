@@ -1,3 +1,5 @@
+#include "atlaspch.h"
+
 #include "Application.h"
 
 #include "Events\ApplicationEvent.h"
@@ -18,7 +20,15 @@ namespace Atlas
 	void Application::Run()
 	{
 		WindowResizeEvent e(1280, 720);
-		TRACE(e);
+
+		if (e.IsInCategory(EventCategoryApplication))
+		{
+			TRACE(e.ToString());
+		}
+		if (e.IsInCategory(EventCategoryInput))
+		{
+			TRACE(e.ToString());
+		}
 
 		while (true);
 	}

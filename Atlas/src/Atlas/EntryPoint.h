@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Application.h"
 
 #ifdef ATLAS_PLATFORM_WINDOWS
