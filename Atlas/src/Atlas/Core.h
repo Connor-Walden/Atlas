@@ -9,3 +9,5 @@
 #else
 	#error Atlas only supports windows at the moment...
 #endif
+
+#define BIT(x) (1 << x)
