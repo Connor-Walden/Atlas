@@ -1,7 +1,7 @@
 #pragma once
 
-#ifdef AT_PLATFORM_WINDOWS
-	#ifdef AT_BUILD_DLL
+#ifdef ATLAS_PLATFORM_WINDOWS
+	#ifdef ATLAS_BUILD_DLL
 		#define ATLAS_API __declspec(dllexport)
 	#else
 		#define ATLAS_API __declspec(dllimport)

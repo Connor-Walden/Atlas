@@ -1,7 +1,7 @@
 #pragma once
 #include "Application.h"
 
-#ifdef AT_PLATFORM_WINDOWS
+#ifdef ATLAS_PLATFORM_WINDOWS
 
 extern Atlas::Application* Atlas::CreateApplication();
 
