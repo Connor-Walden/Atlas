@@ -1,7 +1,13 @@
-﻿  Application.cpp
+﻿  Log.cpp
+C:\Users\user\source\repos\Atlas\Atlas\src\Atlas\Log.h(18,42): warning C4251: 'Atlas::Log::s_CoreLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'Atlas::Log'
+C:\Users\user\source\repos\Atlas\Atlas\vendor\spdlog\include\spdlog\details\registry.h(34): message : see declaration of 'std::shared_ptr<spdlog::logger>'
+C:\Users\user\source\repos\Atlas\Atlas\src\Atlas\Log.h(19,42): warning C4251: 'Atlas::Log::s_ClientLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'Atlas::Log'
+C:\Users\user\source\repos\Atlas\Atlas\vendor\spdlog\include\spdlog\details\registry.h(34): message : see declaration of 'std::shared_ptr<spdlog::logger>'
+C:\Users\user\source\repos\Atlas\Atlas\src\Atlas\Log.h(34,1): warning C4005: 'ERROR': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\wingdi.h(118): message : see previous definition of 'ERROR'
      Creating library C:\Users\user\source\repos\Atlas\bin\Release-x64\Atlas\Atlas.lib and object C:\Users\user\source\repos\Atlas\bin\Release-x64\Atlas\Atlas.exp
   Generating code
-  0 of 6 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+  0 of 4003 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
