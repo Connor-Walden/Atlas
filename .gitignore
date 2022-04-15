@@ -1,5 +1,10 @@
-# Visual Studio Folder
+# Directories
 .vs/
+bin/
+bin-int/
+
+# Files
+.user
 
 # Prerequisites
 *.d
