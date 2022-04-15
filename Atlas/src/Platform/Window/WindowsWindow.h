@@ -2,6 +2,7 @@
 
 #include "Atlas/Window.h"
 
+#include <glad\glad.h>
 #include <GLFW\glfw3.h>
 
 namespace Atlas
@@ -21,10 +22,13 @@ namespace Atlas
 		inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
+		
+		void Clear(float r, float g, float b, float a, uint32_t buffers) override;
+
 	private:
 		virtual void Init(const WindowProps& props);
 		virtual void Shutdown();
-	private:
+
 		GLFWwindow* m_Window;
 
 		struct WindowData

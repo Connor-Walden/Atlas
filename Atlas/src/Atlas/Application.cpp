@@ -3,7 +3,7 @@
 
 #include "Log.h"
 
-#include <GLFW/glfw3.h>
+#include <glad\glad.h>
 
 namespace Atlas
 {
@@ -13,6 +13,9 @@ namespace Atlas
 	{
 		m_Window = std::unique_ptr<Window>(Window::Create()); 
 		m_Window->SetEventCallback(BIND_EVENT_FUNCTION(OnEvent));
+
+		uint32_t id;
+		glGenVertexArrays(1, &id);
 	}
 
 	Application::~Application()
@@ -33,9 +36,8 @@ namespace Atlas
 	{
 		while (m_Running)
 		{
-			glClearColor(1, 0, 1, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
-			
+			m_Window->Clear(1.0f, 1.0f, 0.0f, 1.0f, GL_COLOR_BUFFER_BIT);
+
 			for (Layer* layer : m_LayerStack)
 			{
 				layer->OnUpdate();

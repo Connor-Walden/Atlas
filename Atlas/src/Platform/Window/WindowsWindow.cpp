@@ -50,6 +50,10 @@ namespace Atlas
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		CORE_ASSERT(status, "Failed to initialize GLAD D:");
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
@@ -162,5 +166,11 @@ namespace Atlas
 	bool WindowsWindow::IsVSync() const
 	{
 		return m_Data.VSync;
+	}
+
+	void WindowsWindow::Clear(float r, float g, float b, float a, uint32_t buffers)
+	{
+		glClearColor(r, g, b, a);
+		glClear(buffers);
 	}
 }

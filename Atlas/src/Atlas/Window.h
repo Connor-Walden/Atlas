@@ -2,7 +2,7 @@
 
 #include "atlaspch.h"
 
-#include "Atlas\Core/Core.h"
+#include "Atlas\Core\Core.h"
 #include "Atlas\Events\Event.h"
 
 namespace Atlas
@@ -38,6 +38,7 @@ namespace Atlas
 		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
 		virtual void SetVSync(bool enabled) = 0;
 		virtual bool IsVSync() const = 0;
+		virtual void Clear(float r, float g, float b, float a, uint32_t buffers) = 0;
 
 		static Window* Create(const WindowProps& props = WindowProps());
 	};
