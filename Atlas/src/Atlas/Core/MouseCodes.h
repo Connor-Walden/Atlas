@@ -8,19 +8,19 @@ namespace Atlas
 	{
 		enum : MouseCode
 		{
-			Button0 = 0,
-			Button1 = 1,
-			Button2 = 2,
-			Button3 = 3,
-			Button4 = 4,
-			Button5 = 5,
-			Button6 = 6,
-			Button7 = 7,
+			BUTTON0 = 0,
+			BUTTON1 = 1,
+			BUTTON2 = 2,
+			BUTTON3 = 3,
+			BUTTON4 = 4,
+			BUTTON5 = 5,
+			BUTTON6 = 6,
+			BUTTON7 = 7,
 
-			ButtonLast = Button7,
-			ButtonLeft = Button0,
-			ButtonRight = Button1,
-			ButtonMiddle = Button2
+			BUTTON_LAST = Button7,
+			BUTTON_LEFT = Button0,
+			BUTTON_RIGHT = Button1,
+			BUTTON_MIDDLE = Button2
 		};
 	}
 }

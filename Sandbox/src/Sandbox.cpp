@@ -9,12 +9,14 @@ public:
 
 	void OnUpdate() override
 	{
-		INFO("ExampleLayer:Update");
+		//INFO("ExampleLayer:Update");
 	}
 
 	void OnEvent(Atlas::Event& event) override
 	{
-		INFO("{0}", event);
+		//INFO("{0}", event);
+		if(Atlas::Input::IsKeyPressed(Atlas::Key::TAB))
+			TRACE("Tab key is pressed!");
 	}
 };
 

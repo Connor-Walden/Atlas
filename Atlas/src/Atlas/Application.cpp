@@ -50,7 +50,7 @@ namespace Atlas
 			}
 
 			auto [x, y] = Input::GetMousePosition();
-			CORE_TRACE("{0}, {1}", x, y);
+			//CORE_TRACE("{0}, {1}", x, y);
 
 			m_Window->OnUpdate();
 		}
@@ -68,7 +68,7 @@ namespace Atlas
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FUNCTION(Application::OnWindowClose));
 
-		CORE_TRACE(e);
+		//CORE_TRACE(e);
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
