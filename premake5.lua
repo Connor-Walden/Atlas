@@ -14,6 +14,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Atlas/vendor/GLFW/include"
 IncludeDir["GLAD"] = "Atlas/vendor/GLAD/include"
 IncludeDir["IMGUI"] = "Atlas/vendor/imgui"
+IncludeDir["GLM"] = "Atlas/vendor/GLM"
 
 include "Atlas/vendor/GLFW"
 include "Atlas/vendor/GLAD"
@@ -33,7 +34,13 @@ project "Atlas"
     files
     {
         "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
+        "%{prj.name}/src/**.cpp",
+        "%{prj.name}/vendor/GLM/glm/**.hpp",
+        "%{prj.name}/vendor/GLM/glm/**.inl",
+        "%{prj.name}/vendor/IMGUI/backends/imgui_impl_opengl3.h",
+        "%{prj.name}/vendor/IMGUI/backends/imgui_impl_opengl3.cpp",
+        "%{prj.name}/vendor/IMGUI/backends/imgui_impl_glfw.h",
+        "%{prj.name}/vendor/IMGUI/backends/imgui_impl_glfw.cpp"
     }
 
     includedirs
@@ -42,7 +49,8 @@ project "Atlas"
         "%{prj.name}/vendor/spdlog/include",
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.GLAD}",
-        "%{IncludeDir.IMGUI}"
+        "%{IncludeDir.IMGUI}",
+        "%{IncludeDir.GLM}"
     }
 
     links
@@ -95,13 +103,16 @@ project "Sandbox"
     files
     {
         "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
+        "%{prj.name}/src/**.cpp",
+        "%{prj.name}/vendor/GLM/glm/**.hpp",
+        "%{prj.name}/vendor/GLM/glm/**.inl"
     }
 
     includedirs
     {
         "Atlas/vendor/spdlog/include",
-        "Atlas/src"
+        "Atlas/src",
+        "%{IncludeDir.GLM}"
     }
 
     links

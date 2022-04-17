@@ -1,12 +1,9 @@
 #pragma once
-
 namespace Atlas
 {
-	using MouseCode = uint16_t;
-
 	namespace Mouse
 	{
-		enum : MouseCode
+		enum : uint16_t
 		{
 			BUTTON0 = 0,
 			BUTTON1 = 1,
@@ -17,10 +14,10 @@ namespace Atlas
 			BUTTON6 = 6,
 			BUTTON7 = 7,
 
-			BUTTON_LAST = Button7,
-			BUTTON_LEFT = Button0,
-			BUTTON_RIGHT = Button1,
-			BUTTON_MIDDLE = Button2
+			BUTTON_LAST = BUTTON7,
+			BUTTON_LEFT = BUTTON0,
+			BUTTON_RIGHT = BUTTON1,
+			BUTTON_MIDDLE = BUTTON2
 		};
 	}
 }
