@@ -19,6 +19,9 @@
     <Filter Include="Platform\Window">
       <UniqueIdentifier>{D1E05B2F-3D6C-C9F3-467D-4CE8B28725F4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Atlas\ImGui">
+      <UniqueIdentifier>{b00659b4-e991-41b5-b563-d81bc6ce3414}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Atlas.h" />
@@ -68,6 +71,10 @@
       <Filter>Platform\Window</Filter>
     </ClInclude>
     <ClInclude Include="src\atlaspch.h" />
+    <ClInclude Include="src\Atlas\ImGui\ImGuiLayer.h">
+      <Filter>Atlas\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\imgui_impl_opengl3.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Atlas\Application.cpp">
@@ -86,5 +93,9 @@
       <Filter>Platform\Window</Filter>
     </ClCompile>
     <ClCompile Include="src\atlaspch.cpp" />
+    <ClCompile Include="src\Atlas\ImGui\ImGuiLayer.cpp">
+      <Filter>Atlas\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\imgui_impl_opengl3.cpp" />
   </ItemGroup>
 </Project>
