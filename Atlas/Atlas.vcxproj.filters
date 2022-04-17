@@ -75,6 +75,8 @@
       <Filter>Atlas\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\imgui_impl_opengl3.h" />
+    <ClInclude Include="src\Atlas\Input.h" />
+    <ClInclude Include="src\Platform\Window\WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Atlas\Application.cpp">
@@ -97,5 +99,6 @@
       <Filter>Atlas\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="src\Platform\Window\WindowsInput.cpp" />
   </ItemGroup>
 </Project>

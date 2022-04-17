@@ -40,6 +40,8 @@ namespace Atlas
 		virtual bool IsVSync() const = 0;
 		virtual void Clear(float r, float g, float b, float a, uint32_t buffers) = 0;
 
+		virtual void* GetNativeWindow() const = 0;
+
 		static Window* Create(const WindowProps& props = WindowProps());
 	};
 }

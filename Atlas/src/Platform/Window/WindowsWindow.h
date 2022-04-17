@@ -23,6 +23,11 @@ namespace Atlas
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
 		
+		inline virtual void* GetNativeWindow() const
+		{
+			return m_Window;
+		}
+
 		void Clear(float r, float g, float b, float a, uint32_t buffers) override;
 
 	private:

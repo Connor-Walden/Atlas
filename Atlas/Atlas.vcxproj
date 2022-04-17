@@ -164,11 +164,13 @@
     <ClInclude Include="src\Atlas\Events\Event.h" />
     <ClInclude Include="src\Atlas\Events\KeyEvent.h" />
     <ClInclude Include="src\Atlas\Events\MouseEvent.h" />
+    <ClInclude Include="src\Atlas\Input.h" />
     <ClInclude Include="src\Atlas\Layers\Layer.h" />
     <ClInclude Include="src\Atlas\Layers\LayerStack.h" />
     <ClInclude Include="src\Atlas\Log.h" />
     <ClInclude Include="src\Atlas\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\imgui_impl_opengl3.h" />
+    <ClInclude Include="src\Platform\Window\WindowsInput.h" />
     <ClInclude Include="src\Platform\Window\WindowsWindow.h" />
     <ClInclude Include="src\atlaspch.h" />
   </ItemGroup>
@@ -179,6 +181,7 @@
     <ClCompile Include="src\Atlas\Layers\LayerStack.cpp" />
     <ClCompile Include="src\Atlas\Log.cpp" />
     <ClCompile Include="src\Platform\OpenGL\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="src\Platform\Window\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Window\WindowsWindow.cpp" />
     <ClCompile Include="src\atlaspch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
