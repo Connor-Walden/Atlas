@@ -1,19 +1,18 @@
 #pragma once
 
+#include "RenderCommand.h"
+
 namespace Atlas
 {
-	enum class RendererAPI
-	{
-		None = 0,
-		OpenGL = 1
-	};
-
 	class Renderer
 	{
 	public:
-		inline static RendererAPI GetAPI() { return RendererAPI::OpenGL; }
+		static void BeginScene();
+		static void EndScene();
 
-	private:
-		static RendererAPI s_RendererAPI;
+		static void Submit(const std::shared_ptr<VertexArray>& vertexArray);
+		static void Clear(glm::vec4 color, uint32_t flags);
+
+		inline static RenderAPI::API GetAPI() { return RenderAPI::GetAPI(); }
 	};
 }

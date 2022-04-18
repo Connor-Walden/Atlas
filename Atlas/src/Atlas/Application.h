@@ -9,6 +9,7 @@
 #include "Atlas\ImGui\ImGuiLayer.h"
 
 #include "Atlas\Render\Shader.h"
+#include "Atlas\Render\Buffer\VertexArray.h"
 #include "Atlas\Render\Buffer\VertexBuffer.h"
 #include "Atlas\Render\Buffer\IndexBuffer.h"
 
@@ -38,9 +39,11 @@ namespace Atlas
 		LayerStack m_LayerStack;
 
 		uint32_t m_VAO, m_IBO;
-		std::unique_ptr<Shader> m_Shader;
-		std::unique_ptr<VertexBuffer> m_VertexBuffer;
-		std::unique_ptr<IndexBuffer> m_IndexBuffer;
+		std::shared_ptr<Shader> m_Shader;
+		std::shared_ptr<VertexArray> m_VertexArray;
+
+		std::shared_ptr<Shader> m_Shader2;
+		std::shared_ptr<VertexArray> m_SquareVA;
 
 		static Application* s_Instance;
 	};

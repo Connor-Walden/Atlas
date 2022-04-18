@@ -5,6 +5,9 @@
 #include "Input.h"
 
 #include <glad\glad.h>
+#include <Atlas\Render\Buffer\BufferLayout.h>
+
+#include "Atlas\Render\Renderer.h"
 
 namespace Atlas
 {
@@ -21,38 +24,67 @@ namespace Atlas
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
 
-		glGenVertexArrays(1, &m_VAO);
-		glBindVertexArray(m_VAO);
+		m_VertexArray.reset(VertexArray::Create());
 
-		float vertices[3 * 3] =
+		float vertices[7 * 3] =
+		{
+			-0.5f, -0.5f,  0.0f,  0.3f,  0.8f,  0.3f,  1.0f,
+			 0.5f, -0.5f,  0.0f,  0.8f,  0.3f,  0.3f,  1.0f,
+			 0.0f,  0.5f,  0.0f,  0.8f,  0.3f,  0.8f,  1.0f
+		};
+		std::shared_ptr<VertexBuffer> vertexBuffer;
+		vertexBuffer.reset(VertexBuffer::Create(sizeof(vertices), vertices));
+
+		{
+			BufferLayout layout =
+			{
+				{ ShaderDataType::Float3, "a_Position" },
+				{ ShaderDataType::Float4, "a_Color" }
+			};
+			vertexBuffer->SetLayout(layout);
+		}
+
+		uint32_t indices[3] = { 0, 1, 2 };
+		std::shared_ptr<IndexBuffer> indexBuffer;
+		indexBuffer.reset(IndexBuffer::Create(sizeof(indices) / sizeof(uint32_t), indices));
+
+		m_VertexArray->AddVertexBuffer(vertexBuffer);
+		m_VertexArray->SetIndexBuffer(indexBuffer);
+
+		m_SquareVA.reset(VertexArray::Create());
+
+		float squareVertices[4 * 3] =
 		{
 			-0.5f, -0.5f,  0.0f,
 			 0.5f, -0.5f,  0.0f,
-			 0.0f,  0.5f,  0.0f
+			 0.5f,  0.5f,  0.0f,
+			-0.5f,  0.5f,  0.0f
 		};
-		m_VertexBuffer.reset(VertexBuffer::Create(sizeof(vertices), vertices));
+		std::shared_ptr<VertexBuffer> squareVB;
+		squareVB.reset(VertexBuffer::Create(sizeof(squareVertices), squareVertices));
+		squareVB->SetLayout({ { ShaderDataType::Float3, "a_Position" } });
 
-		uint32_t indices[3] = { 0, 1, 2 };
-		m_IndexBuffer.reset(IndexBuffer::Create(sizeof(indices) / sizeof(uint32_t), indices));
+		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
+		std::shared_ptr<IndexBuffer> squareIB;
+		squareIB.reset(IndexBuffer::Create(sizeof(squareIndices) / sizeof(uint32_t), squareIndices));
 
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
-
-		glBindVertexArray(0);
-		m_VertexBuffer->Unbind();
-		m_IndexBuffer->Unbind();
+		m_SquareVA->AddVertexBuffer(squareVB);
+		m_SquareVA->SetIndexBuffer(squareIB);
 
 		std::string vertexSource = R"(
 			#version 330 core
 			
 			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec4 a_Color;
 
 			out vec3 v_Position;
+			out vec4 v_Color;
 
 			void main()
 			{
 				v_Position = a_Position;
 				gl_Position = vec4(a_Position, 1.0);	
+				v_Color = a_Color;
 			}
 		)";
 
@@ -62,14 +94,45 @@ namespace Atlas
 			layout(location = 0) out vec4 color;
 
 			in vec3 v_Position;
+			in vec4 v_Color;
 
 			void main()
 			{
-				color = vec4(v_Position * 0.5 + 0.5, 1.0);
+				color = v_Color;
 			}
 		)";
 
 		m_Shader.reset(new Shader(vertexSource, fragmentSource));
+
+		std::string vertexSource2 = R"(
+			#version 330 core
+			
+			layout(location = 0) in vec3 a_Position;
+
+			out vec3 v_Position;
+			out vec4 v_Color;
+
+			void main()
+			{
+				v_Position = a_Position;
+				gl_Position = vec4(a_Position, 1.0);	
+			}
+		)";
+
+		std::string fragmentSource2 = R"(
+			#version 330 core
+			
+			layout(location = 0) out vec4 color;
+
+			in vec3 v_Position;
+
+			void main()
+			{
+				color = vec4(v_Position, 1.0);
+			}
+		)";
+
+		m_Shader2.reset(new Shader(vertexSource2, fragmentSource2));
 	}
 
 	Application::~Application()
@@ -92,20 +155,28 @@ namespace Atlas
 	{
 		while (m_Running)
 		{
-			glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT);
+			Renderer::Clear(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f), GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+			Renderer::BeginScene();
+
+			m_Shader2->Bind();
+			Renderer::Submit(m_SquareVA);
+			m_Shader2->Unbind();
 
 			m_Shader->Bind();
-			glBindVertexArray(m_VAO);
-			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
-			glBindVertexArray(0);
+			Renderer::Submit(m_VertexArray);
 			m_Shader->Unbind();
 
+			Renderer::EndScene();
+			//Renderer::Flush();
+
+			// Update
 			for (Layer* layer : m_LayerStack)
 			{
 				layer->OnUpdate();
 			}
 
+			// Render ImGui
 			m_ImGuiLayer->Begin();
 
 			for (Layer* layer : m_LayerStack)
@@ -115,6 +186,7 @@ namespace Atlas
 
 			m_ImGuiLayer->End();
 
+			// Update Window
 			m_Window->OnUpdate();
 		}
 	}

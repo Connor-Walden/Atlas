@@ -11,11 +11,11 @@ namespace Atlas
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None:		CORE_ASSERT(false, "RendererAPI None is not supported!"); return nullptr;
-		case RendererAPI::OpenGL:	return new OpenGLIndexBuffer(count, indices);
+		case RenderAPI::API::None:		CORE_ASSERT(false, "RendererAPI None is not supported!"); return nullptr;
+		case RenderAPI::API::OpenGL:	return new OpenGLIndexBuffer(count, indices);
 		}
 
-		CORE_ASSERT(false, "Unknown RendererAPI...");
+		CORE_ASSERT(false, "Unknown RenderAPI...");
 		return nullptr;
 	}
 }
