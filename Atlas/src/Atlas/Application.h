@@ -9,9 +9,11 @@
 #include "Atlas\ImGui\ImGuiLayer.h"
 
 #include "Atlas\Render\Shader.h"
+#include "Atlas\Render\OrthographicCamera.h"
 #include "Atlas\Render\Buffer\VertexArray.h"
 #include "Atlas\Render\Buffer\VertexBuffer.h"
 #include "Atlas\Render\Buffer\IndexBuffer.h"
+
 
 namespace Atlas
 {
@@ -32,6 +34,7 @@ namespace Atlas
 		inline Window& GetWindow() { return *m_Window; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
+		bool OnWindowResize(WindowResizeEvent& e);
 
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
@@ -44,6 +47,8 @@ namespace Atlas
 
 		std::shared_ptr<Shader> m_Shader2;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthographicCamera m_Camera;
 
 		static Application* s_Instance;
 	};

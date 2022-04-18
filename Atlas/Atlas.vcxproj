@@ -143,7 +143,6 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Atlas\Render\Buffer\BufferLayout.h" />
     <ClInclude Include="src\Atlas.h" />
     <ClInclude Include="src\Atlas\Application.h" />
     <ClInclude Include="src\Atlas\Core\Core.h" />
@@ -160,10 +159,12 @@
     <ClInclude Include="src\Atlas\Layers\Layer.h" />
     <ClInclude Include="src\Atlas\Layers\LayerStack.h" />
     <ClInclude Include="src\Atlas\Log.h" />
+    <ClInclude Include="src\Atlas\Render\Buffer\BufferLayout.h" />
     <ClInclude Include="src\Atlas\Render\Buffer\IndexBuffer.h" />
     <ClInclude Include="src\Atlas\Render\Buffer\VertexArray.h" />
     <ClInclude Include="src\Atlas\Render\Buffer\VertexBuffer.h" />
     <ClInclude Include="src\Atlas\Render\GraphicsContext.h" />
+    <ClInclude Include="src\Atlas\Render\OrthographicCamera.h" />
     <ClInclude Include="src\Atlas\Render\RenderAPI.h" />
     <ClInclude Include="src\Atlas\Render\RenderCommand.h" />
     <ClInclude Include="src\Atlas\Render\Renderer.h" />
@@ -594,16 +595,17 @@
     <ClInclude Include="vendor\GLM\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Atlas\Render\Buffer\BufferLayout.cpp" />
     <ClCompile Include="src\Atlas\Application.cpp" />
     <ClCompile Include="src\Atlas\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Atlas\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Atlas\Layers\Layer.cpp" />
     <ClCompile Include="src\Atlas\Layers\LayerStack.cpp" />
     <ClCompile Include="src\Atlas\Log.cpp" />
+    <ClCompile Include="src\Atlas\Render\Buffer\BufferLayout.cpp" />
     <ClCompile Include="src\Atlas\Render\Buffer\IndexBuffer.cpp" />
     <ClCompile Include="src\Atlas\Render\Buffer\VertexArray.cpp" />
     <ClCompile Include="src\Atlas\Render\Buffer\VertexBuffer.cpp" />
+    <ClCompile Include="src\Atlas\Render\OrthographicCamera.cpp" />
     <ClCompile Include="src\Atlas\Render\RenderAPI.cpp" />
     <ClCompile Include="src\Atlas\Render\RenderCommand.cpp" />
     <ClCompile Include="src\Atlas\Render\Renderer.cpp" />

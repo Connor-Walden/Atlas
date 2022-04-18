@@ -14,6 +14,9 @@ namespace Atlas
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
+		: m_Camera(	-1.0f, 1.0f, 
+					-1.0f, 1.0f, 
+					-1.0f, 1.0f)
 	{
 		CORE_ASSERT(!s_Instance, "Atlas already running...");
 		s_Instance = this;
@@ -55,10 +58,10 @@ namespace Atlas
 
 		float squareVertices[4 * 3] =
 		{
-			-0.5f, -0.5f,  0.0f,
-			 0.5f, -0.5f,  0.0f,
-			 0.5f,  0.5f,  0.0f,
-			-0.5f,  0.5f,  0.0f
+			-0.75f, -0.75f,  0.0f,
+			 0.75f, -0.75f,  0.0f,
+			 0.75f,  0.75f,  0.0f,
+			-0.75f,  0.75f,  0.0f
 		};
 		std::shared_ptr<VertexBuffer> squareVB;
 		squareVB.reset(VertexBuffer::Create(sizeof(squareVertices), squareVertices));
@@ -77,14 +80,16 @@ namespace Atlas
 			layout(location = 0) in vec3 a_Position;
 			layout(location = 1) in vec4 a_Color;
 
+			uniform mat4 u_ViewProjection;
+
 			out vec3 v_Position;
 			out vec4 v_Color;
 
 			void main()
 			{
 				v_Position = a_Position;
-				gl_Position = vec4(a_Position, 1.0);	
 				v_Color = a_Color;
+				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);	
 			}
 		)";
 
@@ -109,13 +114,15 @@ namespace Atlas
 			
 			layout(location = 0) in vec3 a_Position;
 
+			uniform mat4 u_ViewProjection;
+
 			out vec3 v_Position;
 			out vec4 v_Color;
 
 			void main()
 			{
 				v_Position = a_Position;
-				gl_Position = vec4(a_Position, 1.0);	
+				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);	
 			}
 		)";
 
@@ -157,36 +164,19 @@ namespace Atlas
 		{
 			Renderer::Clear(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f), GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-			Renderer::BeginScene();
+			Renderer::BeginScene(m_Camera);
 
-			m_Shader2->Bind();
-			Renderer::Submit(m_SquareVA);
-			m_Shader2->Unbind();
-
-			m_Shader->Bind();
-			Renderer::Submit(m_VertexArray);
-			m_Shader->Unbind();
+			Renderer::Submit(m_Shader2, m_SquareVA);
+			Renderer::Submit(m_Shader, m_VertexArray);
 
 			Renderer::EndScene();
-			//Renderer::Flush();
 
-			// Update
-			for (Layer* layer : m_LayerStack)
-			{
-				layer->OnUpdate();
-			}
+			for (Layer* layer : m_LayerStack) layer->OnUpdate();
 
-			// Render ImGui
 			m_ImGuiLayer->Begin();
-
-			for (Layer* layer : m_LayerStack)
-			{
-				layer->OnImGuiRender();
-			}
-
+			for (Layer* layer : m_LayerStack) layer->OnImGuiRender();
 			m_ImGuiLayer->End();
 
-			// Update Window
 			m_Window->OnUpdate();
 		}
 	}

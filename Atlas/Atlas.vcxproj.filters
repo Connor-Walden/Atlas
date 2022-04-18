@@ -19,11 +19,23 @@
     <Filter Include="src\Atlas\Layers">
       <UniqueIdentifier>{3085171B-1C7E-366D-45B0-1BF231081679}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Atlas\Render">
+      <UniqueIdentifier>{E0CC5829-CCC5-777B-F5F7-5C00E14F5787}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Atlas\Render\Buffer">
+      <UniqueIdentifier>{C912FA29-354A-42C1-3E54-A6E4AA0A69BA}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Platform\Window">
-      <UniqueIdentifier>{E807C449-5469-A157-DDD6-E7094937D816}</UniqueIdentifier>
+    <Filter Include="src\Platform\OpenGL">
+      <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\OpenGL\Buffer">
+      <UniqueIdentifier>{7EB87943-6AC8-2514-D381-8A32BFB014AD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\Windows">
+      <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -102,14 +114,56 @@
     <ClInclude Include="src\Atlas\Log.h">
       <Filter>src\Atlas</Filter>
     </ClInclude>
+    <ClInclude Include="src\Atlas\Render\Buffer\BufferLayout.h">
+      <Filter>src\Atlas\Render\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Atlas\Render\Buffer\IndexBuffer.h">
+      <Filter>src\Atlas\Render\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Atlas\Render\Buffer\VertexArray.h">
+      <Filter>src\Atlas\Render\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Atlas\Render\Buffer\VertexBuffer.h">
+      <Filter>src\Atlas\Render\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Atlas\Render\GraphicsContext.h">
+      <Filter>src\Atlas\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Atlas\Render\RenderAPI.h">
+      <Filter>src\Atlas\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Atlas\Render\RenderCommand.h">
+      <Filter>src\Atlas\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Atlas\Render\Renderer.h">
+      <Filter>src\Atlas\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Atlas\Render\Shader.h">
+      <Filter>src\Atlas\Render</Filter>
+    </ClInclude>
     <ClInclude Include="src\Atlas\Window.h">
       <Filter>src\Atlas</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Buffer\OpenGLIndexBuffer.h">
+      <Filter>src\Platform\OpenGL\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Buffer\OpenGLVertexArray.h">
+      <Filter>src\Platform\OpenGL\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Buffer\OpenGLVertexBuffer.h">
+      <Filter>src\Platform\OpenGL\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRenderAPI.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
-      <Filter>src\Platform\Window</Filter>
+      <Filter>src\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
-      <Filter>src\Platform\Window</Filter>
+      <Filter>src\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\atlaspch.h">
       <Filter>src</Filter>
@@ -1359,20 +1413,7 @@
     <ClInclude Include="vendor\GLM\glm\vector_relational.hpp">
       <Filter>vendor\GLM\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Atlas\Render\GraphicsContext.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
-    <ClInclude Include="src\Atlas\Render\Shader.h" />
-    <ClInclude Include="src\Atlas\Render\Buffer\VertexBuffer.h" />
-    <ClInclude Include="src\Atlas\Render\Buffer\IndexBuffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\Buffer\OpenGLVertexBuffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\Buffer\OpenGLIndexBuffer.h" />
-    <ClInclude Include="src\Atlas\Render\Renderer.h" />
-    <ClInclude Include="src\Atlas\Render\Buffer\BufferLayout.h" />
-    <ClInclude Include="src\Atlas\Render\Buffer\VertexArray.h" />
-    <ClInclude Include="src\Platform\OpenGL\Buffer\OpenGLVertexArray.h" />
-    <ClInclude Include="src\Atlas\Render\RenderAPI.h" />
-    <ClInclude Include="src\Atlas\Render\RenderCommand.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLRenderAPI.h" />
+    <ClInclude Include="src\Atlas\Render\OrthographicCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Atlas\Application.cpp">
@@ -1393,11 +1434,50 @@
     <ClCompile Include="src\Atlas\Log.cpp">
       <Filter>src\Atlas</Filter>
     </ClCompile>
+    <ClCompile Include="src\Atlas\Render\Buffer\BufferLayout.cpp">
+      <Filter>src\Atlas\Render\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Atlas\Render\Buffer\IndexBuffer.cpp">
+      <Filter>src\Atlas\Render\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Atlas\Render\Buffer\VertexArray.cpp">
+      <Filter>src\Atlas\Render\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Atlas\Render\Buffer\VertexBuffer.cpp">
+      <Filter>src\Atlas\Render\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Atlas\Render\RenderAPI.cpp">
+      <Filter>src\Atlas\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Atlas\Render\RenderCommand.cpp">
+      <Filter>src\Atlas\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Atlas\Render\Renderer.cpp">
+      <Filter>src\Atlas\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Atlas\Render\Shader.cpp">
+      <Filter>src\Atlas\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Buffer\OpenGLIndexBuffer.cpp">
+      <Filter>src\Platform\OpenGL\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Buffer\OpenGLVertexArray.cpp">
+      <Filter>src\Platform\OpenGL\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Buffer\OpenGLVertexBuffer.cpp">
+      <Filter>src\Platform\OpenGL\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRenderAPI.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
-      <Filter>src\Platform\Window</Filter>
+      <Filter>src\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
-      <Filter>src\Platform\Window</Filter>
+      <Filter>src\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\atlaspch.cpp">
       <Filter>src</Filter>
@@ -1408,18 +1488,6 @@
     <ClCompile Include="vendor\IMGUI\backends\imgui_impl_opengl3.cpp">
       <Filter>vendor\IMGUI\backends</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
-    <ClCompile Include="src\Atlas\Render\Shader.cpp" />
-    <ClCompile Include="src\Atlas\Render\Buffer\IndexBuffer.cpp" />
-    <ClCompile Include="src\Atlas\Render\Buffer\VertexBuffer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\Buffer\OpenGLVertexBuffer.cpp" />
-    <ClCompile Include="src\Atlas\Render\Renderer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\Buffer\OpenGLIndexBuffer.cpp" />
-    <ClCompile Include="src\Atlas\Render\Buffer\BufferLayout.cpp" />
-    <ClCompile Include="src\Atlas\Render\Buffer\VertexArray.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\Buffer\OpenGLVertexArray.cpp" />
-    <ClCompile Include="src\Atlas\Render\RenderAPI.cpp" />
-    <ClCompile Include="src\Atlas\Render\RenderCommand.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLRenderAPI.cpp" />
+    <ClCompile Include="src\Atlas\Render\OrthographicCamera.cpp" />
   </ItemGroup>
 </Project>
