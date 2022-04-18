@@ -4,6 +4,11 @@ bin/
 bin-int/
 
 # Files
+.tlog
+.recipe
+.lastbuildstate
+.iobj
+.ipdb
 .user
 
 # Prerequisites
