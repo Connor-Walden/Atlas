@@ -13,7 +13,7 @@ namespace Atlas
 		unsigned int Width;
 		unsigned int Height;
 
-		WindowProps(const std::string& title = "Hazel Engine",
+		WindowProps(const std::string& title = "Atlas Engine",
 			unsigned int width = 1280,
 			unsigned int height = 720)
 			: Title(title), Width(width), Height(height)
@@ -38,7 +38,6 @@ namespace Atlas
 		virtual void SetEventCallback(const EventCallbackFn& callback) = 0;
 		virtual void SetVSync(bool enabled) = 0;
 		virtual bool IsVSync() const = 0;
-		virtual void Clear(float r, float g, float b, float a, uint32_t buffers) = 0;
 
 		virtual void* GetNativeWindow() const = 0;
 

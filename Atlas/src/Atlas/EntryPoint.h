@@ -9,7 +9,7 @@ extern Atlas::Application* Atlas::CreateApplication();
 int main(int argc, char** argv)
 {
 	Atlas::Log::Init();
-	CORE_INFO("Initialized Log!");
+	LOG_CORE_INFO("Initialized Log!");
 
 	auto app = Atlas::CreateApplication();
 	app->Run();

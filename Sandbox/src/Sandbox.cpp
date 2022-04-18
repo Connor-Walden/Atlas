@@ -30,7 +30,7 @@ public:
 
 	void OnEvent(Atlas::Event& event) override
 	{
-		INFO("{0}", event);
+		//LOG_INFO("{0}", event);
 	}
 };
 

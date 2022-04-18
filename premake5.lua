@@ -22,7 +22,7 @@ include "Atlas/vendor/imgui"
 
 project "Atlas"
     location "Atlas"
-    kind "SharedLib"
+    kind "StaticLib"
     language "C++"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -37,9 +37,7 @@ project "Atlas"
         "%{prj.name}/src/**.cpp",
         "%{prj.name}/vendor/GLM/glm/**.hpp",
         "%{prj.name}/vendor/GLM/glm/**.inl",
-        "%{prj.name}/vendor/IMGUI/backends/imgui_impl_opengl3.h",
         "%{prj.name}/vendor/IMGUI/backends/imgui_impl_opengl3.cpp",
-        "%{prj.name}/vendor/IMGUI/backends/imgui_impl_glfw.h",
         "%{prj.name}/vendor/IMGUI/backends/imgui_impl_glfw.cpp"
     }
 
@@ -70,11 +68,6 @@ project "Atlas"
         {
             "ATLAS_PLATFORM_WINDOWS",
             "ATLAS_BUILD_DLL"
-        }
-
-        postbuildcommands
-        {
-            ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
         }
 
     filter "configurations:Debug"
@@ -120,7 +113,6 @@ project "Sandbox"
         "Atlas"
     }
 
-
     filter "system:windows"
         cppdialect "C++17"
         staticruntime "On"
@@ -129,11 +121,6 @@ project "Sandbox"
         defines
         {
             "ATLAS_PLATFORM_WINDOWS"
-        }
-
-        postbuildcommands
-        {
-            ("{COPY} ../bin/" .. outputdir .. "/Sandbox")
         }
 
     filter "configurations:Debug"
