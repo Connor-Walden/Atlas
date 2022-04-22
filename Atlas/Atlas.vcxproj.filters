@@ -129,6 +129,9 @@
     <ClInclude Include="src\Atlas\Render\GraphicsContext.h">
       <Filter>src\Atlas\Render</Filter>
     </ClInclude>
+    <ClInclude Include="src\Atlas\Render\OrthographicCamera.h">
+      <Filter>src\Atlas\Render</Filter>
+    </ClInclude>
     <ClInclude Include="src\Atlas\Render\RenderAPI.h">
       <Filter>src\Atlas\Render</Filter>
     </ClInclude>
@@ -1413,7 +1416,6 @@
     <ClInclude Include="vendor\GLM\glm\vector_relational.hpp">
       <Filter>vendor\GLM\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Atlas\Render\OrthographicCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Atlas\Application.cpp">
@@ -1445,6 +1447,9 @@
     </ClCompile>
     <ClCompile Include="src\Atlas\Render\Buffer\VertexBuffer.cpp">
       <Filter>src\Atlas\Render\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Atlas\Render\OrthographicCamera.cpp">
+      <Filter>src\Atlas\Render</Filter>
     </ClCompile>
     <ClCompile Include="src\Atlas\Render\RenderAPI.cpp">
       <Filter>src\Atlas\Render</Filter>
@@ -1488,6 +1493,5 @@
     <ClCompile Include="vendor\IMGUI\backends\imgui_impl_opengl3.cpp">
       <Filter>vendor\IMGUI\backends</Filter>
     </ClCompile>
-    <ClCompile Include="src\Atlas\Render\OrthographicCamera.cpp" />
   </ItemGroup>
 </Project>

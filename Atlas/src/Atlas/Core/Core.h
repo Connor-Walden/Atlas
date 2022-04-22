@@ -21,3 +21,6 @@
 #define BIT(x) (1 << x)
 
 #define BIND_EVENT_FUNCTION(fn) std::bind(&fn, this, std::placeholders::_1)
+
+#define BUFFER_TYPE_COLOR 0x00004000
+#define BUFFER_TYPE_DEPTH 0x00000100

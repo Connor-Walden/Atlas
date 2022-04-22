@@ -142,3 +142,8 @@ namespace Atlas
 		};
 	}
 }
+
+#define ATLAS_KEY_RIGHT 262
+#define ATLAS_KEY_LEFT 263
+#define ATLAS_KEY_DOWN 264
+#define ATLAS_KEY_UP 265

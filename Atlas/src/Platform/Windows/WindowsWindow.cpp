@@ -1,6 +1,8 @@
 #include "atlaspch.h"
 #include "WindowsWindow.h"
 
+#include "Atlas\Application.h"
+
 #include "Atlas\Events\ApplicationEvent.h"
 #include "Atlas\Events\KeyEvent.h"
 #include "Atlas\Events\MouseEvent.h"
@@ -74,6 +76,8 @@ namespace Atlas
 		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window)
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+
+			Application::Stop();
 
 			WindowCloseEvent event;
 			data.EventCallback(event);

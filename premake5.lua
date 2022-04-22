@@ -98,7 +98,9 @@ project "Sandbox"
         "%{prj.name}/src/**.h",
         "%{prj.name}/src/**.cpp",
         "%{prj.name}/vendor/GLM/glm/**.hpp",
-        "%{prj.name}/vendor/GLM/glm/**.inl"
+        "%{prj.name}/vendor/GLM/glm/**.inl",
+        "%{prj.name}/vendor/IMGUI/**.h",
+        "%{prj.name}/vendor/IMGUI/**.cpp"
     }
 
     includedirs
